@@ -12,8 +12,8 @@
    id="svg8"
    version="1.1"
    viewBox="0 0 423.33332 264.58331"
-   height="1000"
-   width="1600">
+   height="100%"
+   width="100%">
   <defs
      id="defs2">
     <inkscape:path-effect
