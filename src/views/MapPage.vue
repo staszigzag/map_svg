@@ -16,13 +16,14 @@
 <!--        <wisconsin ref="wisconsin" />-->
 <!--        <ohio ref="ohio" />-->
       </g>
-      <border />
+      <border v-show="isShowBorder" />
     </svg-wrapper>
     <v-card>
       <v-card-title class="text-uppercase">
         {{selectState}}
       </v-card-title>
       <v-btn @click="handlerClickHiddenTitle">hidden</v-btn>
+      <v-btn @click="isShowBorder = !isShowBorder">hidden border</v-btn>
       <v-btn @click="handlerClickStart">start</v-btn>
       <v-btn @click="handlerClickStart2">start2</v-btn>
     </v-card>
@@ -43,27 +44,30 @@ import svgWrapper from '../components/svgWrapper'
 export default {
   data: () => ({
     isShow: true,
+    isShowBorder: true,
     selectState: null,
     states: [
-      'wisconsin',
-      'illinois',
-      'ohio',
-      'maine',
-      'montana',
       'alaska',
-      'oregon',
-      'florida',
-      'hawaii',
-      'vermont',
       'michigan',
-      'utah',
-      'kansas',
-      'colorado',
+      'wisconsin',
+      'montana',
       'washington',
-      'virginia',
 
+      'maine',
+      'vermont',
+      'ohio',
+      'illinois',
+      'kansas',
+      'utah',
+      'oregon',
+
+      'virginia',
+      'florida',
+      'texas',
+      'colorado',
       'california',
-      'texas'
+
+      'hawaii'
     ]
   }),
   components: {
@@ -148,8 +152,8 @@ export default {
   fill: none;
   stroke: #000
 }
-.state_title{
-  /*stroke-width: .8*/
+.state_title {
+  /*stroke-width: .8;*/
 }
 .state_border{
   fill: rgba(0, 0, 0, 0.01);
@@ -176,6 +180,10 @@ export default {
 }
 .active .state_title {
   stroke-width: 1.6;
-  stroke: #2d2d2d
+  stroke: #ffffff
+}
+.active .state_title--fill {
+  stroke-width: 1.6;
+  stroke: #000000
 }
 </style>

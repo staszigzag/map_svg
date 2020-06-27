@@ -1,14 +1,14 @@
 <template>
   <v-app >
     <!-- <Header /> -->
-    <v-content class="content">
+    <v-main class="content">
       <v-container  class="container">
         <v-card class="mt-10 main">
           <!-- <mapa-navigation /> -->
           <router-view ></router-view>
         </v-card>
       </v-container>
-    </v-content>
+    </v-main>
     <!-- <mapa-notifications /> -->
     <!-- <Footer /> -->
   </v-app>
