@@ -28,6 +28,42 @@ export default {
   errorSaveProducts: 'Не удается сохранить продукт/тариф',
   saveProducts: 'Добавлен новый продукт/тариф'
 }
+// v-if="isShowTitlesStates"
 // wisconsin
 // illinois
 // ohio
+// maine
+// montana
+// alaska
+// oregon
+// florida
+// hawaii
+// vermont
+// michigan
+// colorado
+// utah
+// washington
+// virginia
+// kansas
+// california
+// texas
+//
+//
+// export const Back: gsap.Back;
+// export const Bounce: gsap.Ease;
+// export const Circ: gsap.Ease;!!!
+// export const Cubic: gsap.Ease;
+// export const Elastic: gsap.Elastic;
+// export const Expo: gsap.Ease;
+// export const Linear: gsap.Linear;
+// export const Power0: gsap.Linear;
+// export const Power1: gsap.Ease;
+// export const Power2: gsap.Ease;
+// export const Power3: gsap.Ease;
+// export const Power4: gsap.Ease;
+// export const Quad: gsap.Ease;
+// export const Quart: gsap.Ease;
+// export const Quint: gsap.Ease;
+// export const Sine: gsap.Ease;
+// export const SteppedEase: gsap.SteppedEase;
+// export const Strong: gsap.Ease;
