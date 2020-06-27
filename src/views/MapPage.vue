@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <svg-wrapper>
+  <div class="pa-10">
+    <svg-wrapper class="m">
       <g v-show="isShow">
         <template v-for="state in states">
           <component
@@ -19,6 +19,9 @@
       <border />
     </svg-wrapper>
     <v-card>
+      <v-card-title class="text-uppercase">
+        {{selectState}}
+      </v-card-title>
       <v-btn @click="handlerClickHiddenTitle">hidden</v-btn>
       <v-btn @click="handlerClickStart">start</v-btn>
       <v-btn @click="handlerClickStart2">start2</v-btn>
@@ -141,53 +144,38 @@ export default {
 }
 </script>
 <style lang="scss" >
-svg2:hover {
-  -webkit-filter: drop-shadow(5px 5px 5px red);
-  filter: drop-shadow(5px 5px 5px red);
-  transform: translate(-1px, -1px);
-  transition: transform 0.1s;
-}
-.path2 {
-  fill: none;
-  text-shadow: 1px 1px 2px #ca2b23;
-  &:hover {
-    -webkit-filter: drop-shadow(5px 5px 5px red);
-    filter: drop-shadow(5px 5px 5px red);
-    /*fill: rgba(111, 146, 117, 0.4);*/
-    transform: translate(-1px, -1px);
-    transition: transform 0.1s;
-  }
-}
-.bird2:hover {
-  border: 2px solid red;
-}
 .state{
   fill: none;
   stroke: #000
 }
 .state_title{
-  stroke-width: .8
+  /*stroke-width: .8*/
 }
 .state_border{
-  fill: rgba(118, 203, 198, 0.01);
-  stroke-width: .6;
-  stroke: #ca2b23;
+  fill: rgba(0, 0, 0, 0.01);
+  /*stroke-width: .6;*/
+  /*stroke: #ca2b23;*/
 }
+
 .state:hover {
-  fill: rgba(218, 222, 221, 0.9);
+  /*fill: rgba(218, 222, 221, 0.9);*/
   transform: translate(1px,-1px);
   filter: url(#dropShadow);
-  transition: transform .1s;
+  transition: transform .3s;
+}
+.state:hover{
+  fill: none;
 }
 .state:hover .state_border{
-  fill: rgb(54, 141, 135);
+  fill: rgb(213, 208, 208);
 }
-.active .state_border,
-.active .state_title {
-  stroke-width: 2;
+
+.active .state_border{
+  stroke-width: 2.3;
   stroke: #2d2d2d
 }
-#dropShadow{
-  /*box-shadow:1px 1px 1px #000;*/
+.active .state_title {
+  stroke-width: 1.6;
+  stroke: #2d2d2d
 }
 </style>
