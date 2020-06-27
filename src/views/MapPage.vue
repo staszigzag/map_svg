@@ -53,11 +53,12 @@ export default {
       'hawaii',
       'vermont',
       'michigan',
-      'colorado',
       'utah',
+      'kansas',
+      'colorado',
       'washington',
       'virginia',
-      'kansas',
+
       'california',
       'texas'
     ]
@@ -162,13 +163,13 @@ svg2:hover {
 }
 .state{
   fill: none;
-
   stroke: #000
 }
 .state_title{
   stroke-width: .8
 }
 .state_border{
+  fill: rgba(118, 203, 198, 0.01);
   stroke-width: .6;
   stroke: #ca2b23;
 }
@@ -177,6 +178,9 @@ svg2:hover {
   transform: translate(1px,-1px);
   filter: url(#dropShadow);
   transition: transform .1s;
+}
+.state:hover .state_border{
+  fill: rgb(54, 141, 135);
 }
 .active .state_border,
 .active .state_title {
