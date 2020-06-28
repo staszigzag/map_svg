@@ -11,10 +11,6 @@
             :class="{ active: selectState === state }"
           />
         </template>
-
-<!--        <illinois ref="illinois" />-->
-<!--        <wisconsin ref="wisconsin" />-->
-<!--        <ohio ref="ohio" />-->
       </g>
       <border v-show="isShowBorder" />
     </svg-wrapper>
