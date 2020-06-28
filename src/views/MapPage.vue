@@ -1,5 +1,5 @@
 <template>
-  <div class="pa-10">
+  <div class="pa-2 pa-sm-10">
     <svg-wrapper class="m">
       <g v-show="isShow">
         <template v-for="state in states">
@@ -18,33 +18,67 @@
       </g>
       <border v-show="isShowBorder" />
     </svg-wrapper>
-    <v-card>
-      <v-card-title class="text-uppercase">
-        {{selectState}}
+    <v-card class="mt-3">
+      <v-card-title >
+        Selected state <span class="text-uppercase">{{selectState ? ': ' + selectState : ''}}</span>
       </v-card-title>
-      <v-btn @click="handlerClickHiddenTitle">hidden</v-btn>
-      <v-btn @click="isShowBorder = !isShowBorder">hidden border</v-btn>
-      <v-btn @click="handlerClickStart">start</v-btn>
-      <v-btn @click="handlerClickStart2">start2</v-btn>
+      <v-card-text>
+        <v-row dense align="center">
+          <v-col cols="12" sm="4" md="6" xl="4">
+            <v-select dense v-model="selectState" outlined :items="states" color="teal"/>
+          </v-col>
+          <v-col sm="4" md="3" xl="2">
+            <v-switch v-model="isShowName" class="mt-n1" label="Show name states" color="teal" />
+          </v-col>
+          <v-col sm="4" md="3" xl="2">
+            <v-switch v-model="isShowBorder" class="mt-n1" label="Show border" color="teal"/>
+          </v-col>
+        </v-row>
+      </v-card-text>
+      <v-card-actions class="pt-0">
+        <v-row dense>
+          <v-col cols="12" md="4">
+            <v-btn @click="handlerClickStart" block color="teal  lighten-2" class="white--text">
+              <v-icon>
+                stars
+              </v-icon>
+              start first version
+            </v-btn>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-btn @click="handlerClickStart2" block color="teal  lighten-2" class="white--text">
+              <v-icon>
+                stars
+              </v-icon>
+              start second version</v-btn>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-btn @click="handlerClickStart3" block color="teal  lighten-2" class="white--text">
+              <v-icon>
+                stars
+              </v-icon>
+              start other version</v-btn>
+          </v-col>
+        </v-row>
+      </v-card-actions>
+
     </v-card>
   </div>
 </template>
 
 <script>
-import { TweenMax, Sine, TweenLite, Bounce } from 'gsap'
+import { TweenLite, Bounce } from 'gsap'
 import { mapState, mapMutations } from 'vuex'
 
 import border from '../components/border.vue'
-
-// import wisconsin  from '../components/states/wisconsin.vue'
-// import illinois from '../components/states/illinois.vue'
-// import ohio from '../components/states/ohio.vue'
 import svgWrapper from '../components/svgWrapper'
 
 export default {
   data: () => ({
-    isShow: true,
+    isBlocker: false,
+    isShow: false,
     isShowBorder: true,
+    isShowName: true,
     selectState: null,
     states: [
       'alaska',
@@ -95,54 +129,60 @@ export default {
   computed: {
     ...mapState(['isShowTitlesStates'])
   },
+  watch: {
+    isShowName(val) {
+      this.TOGGLE_SHOW_TITLES_STATES(val)
+    }
+  },
   methods: {
     ...mapMutations(['TOGGLE_SHOW_TITLES_STATES']),
     handlerClickState(st) {
       this.selectState = st
     },
-    handlerClickHiddenTitle() {
-      this.TOGGLE_SHOW_TITLES_STATES(!this.isShowTitlesStates)
-    },
-    handlerClickStart2() {
-      // const wisconsin = this.$refs.wisconsin.$el
-      // const illinois = this.$refs.illinois.$el
-      // const ohio = this.$refs.ohio.$el
+    handlerClickStart() {
+      if (this.isBlocker) return
+      this.isBlocker = true
+      setTimeout(() => {
+        this.isBlocker = false
+      }, 3400)
       const els = this.states.map(s => this.$refs[s][0].$el)
       this.isShow = true
-      // Анимация происходит от заданного значения до текущего.
       TweenLite.staggerFrom(
         els,
         0.7,
-        { opacity: 0, scale: 6, x: 300, y: 100, ease: Bounce.Circ },
+        { opacity: 0, rotate: 60, scale: 7, x: 300, y: 100, ease: Bounce.Circ },
         0.15
       )
-      // TweenLite.from([ohio], 1.2, { opacity: 0, x: -300, y: -100, ease: Bounce.easeOut })
     },
-    handlerClickStart() {
+    handlerClickStart2() {
+      if (this.isBlocker) return
+      this.isBlocker = true
+      setTimeout(() => {
+        this.isBlocker = false
+      }, 2200)
       const els = this.states.map(s => this.$refs[s][0].$el)
       this.isShow = true
       let delta = -300
       els.forEach(el => {
         // TweenLite.from(el, 1.2, { opacity: 0, x: -300, y: -100, ease: Bounce.Cubic })
-        TweenLite.from(el, 2.2, { opacity: 0, x: delta, y: delta, ease: Bounce.Cubic })
+        TweenLite.from(el, 1.8, { opacity: 0, x: delta, y: delta, ease: Bounce.Cubic })
         delta += 60
-        console.log(delta)
       })
     },
-    startScissors() {
-      // TweenLite.from(logo, 2, {opacity:0, left:"300px"});
-      console.log(this.$refs.rightscissor)
-      this.scissorAnim(this.$refs.rightscissor.$el, 30)
-      // this.scissorAnim(this.$refs.leftscissor, -30)
-    },
-    scissorAnim(el, rot) {
-      TweenMax.to(el, 0.25, {
-        rotation: rot,
-        repeat: 3,
-        yoyo: true,
-        svgOrigin: '50 45',
-        ease: Sine.easeInOut
-      })
+    handlerClickStart3() {
+      if (this.isBlocker) return
+      this.isBlocker = true
+      setTimeout(() => {
+        this.isBlocker = false
+      }, 2300)
+      const els = this.states.map(s => this.$refs[s][0].$el).sort(() => Math.random() - 0.5)
+      this.isShow = true
+      TweenLite.staggerFrom(
+        els,
+        0.5,
+        { opacity: 0, scale: 6, x: 0, y: 300, ease: Bounce.Cubic },
+        0.1
+      )
     }
   }
 }
@@ -171,7 +211,7 @@ export default {
   fill: none;
 }
 .state:hover .state_border{
-  fill: rgb(213, 208, 208);
+  fill: #E0E0E0;
 }
 
 .active .state_border{

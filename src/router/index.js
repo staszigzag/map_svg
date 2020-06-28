@@ -8,6 +8,10 @@ const routes = [
     path: '/',
     name: 'MapPage',
     component: MapPage
+  },
+  {
+    path: '/*',
+    redirect: { name: 'MapPage' }
   }
 ]
 
